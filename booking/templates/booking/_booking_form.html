@@ -1,0 +1,20 @@
+<form method="post" action="{% url 'booking_home' %}">
+    {% csrf_token %}
+    <label for="service">Choose a service:</label>
+    <select id="service" name="service">
+        {% for service in services %}
+            <option value="{{ service.id }}">{{ service.name }} ({{ service.category }})</option>
+        {% endfor %}
+    </select>
+
+    <label for="check_in">Check-in:</label>
+    <input type="date" id="check_in" name="check_in">
+
+    <label for="check_out">Check-out:</label>
+    <input type="date" id="check_out" name="check_out">
+
+    <label for="guests">Number of Guests:</label>
+    <input type="number" id="guests" name="number_of_guests" min="1" value="1">
+
+    <button type="submit">Book Now</button>
+</form>
