@@ -24,40 +24,6 @@ class Amenity(models.Model):
         verbose_name_plural = 'Amenities'
 
 
-class Room(models.Model):
-    ROOM_TYPE_CHOICES = [
-        ('single', 'Single'),
-        ('double', 'Double'),
-        ('suite', 'Suite'),
-        ('family', 'Family'),
-    ]
-
-    ROOM_STATUS_CHOICES = [
-        ('available', 'Available'),
-        ('occupied', 'Occupied'),
-        ('maintenance', 'Under Maintenance'),
-    ]
-
-    number = models.CharField(max_length=10, unique=True)
-    type = models.CharField(max_length=100, choices=ROOM_TYPE_CHOICES)
-    capacity = models.PositiveIntegerField(default=1)
-    description = models.TextField(blank=True)
-    price_per_night = models.DecimalField(max_digits=10, decimal_places=2)
-    is_available = models.BooleanField(default=True)
-    status = models.CharField(max_length=100, choices=ROOM_STATUS_CHOICES)
-    amenities = models.ManyToManyField(Amenity, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return f"Room {self.number} ({self.type})"
-
-    class Meta:
-        ordering = ['number']
-        verbose_name = 'Room'
-        verbose_name_plural = 'Rooms'
-
-
 class Service(models.Model):
     STATUS_CHOICES = [
         ('available', 'Available'),
@@ -101,3 +67,34 @@ class Service(models.Model):
         ordering = ['name']
         verbose_name = 'Service'
         verbose_name_plural = 'Services'
+
+
+class Room(models.Model):
+
+    ROOM_STATUS_CHOICES = [
+        ('available', 'Available'),
+        ('occupied', 'Occupied'),
+        ('maintenance', 'Under Maintenance'),
+    ]
+
+    service = models.ForeignKey(
+        Service,
+        on_delete=models.CASCADE,
+        limit_choices_to={'category': 'accommodation'},
+        default=1,
+        related_name='rooms'
+    )
+    number = models.CharField(max_length=10, unique=True)
+    is_available = models.BooleanField(default=True)
+    status = models.CharField(max_length=100, choices=ROOM_STATUS_CHOICES)
+    amenities = models.ManyToManyField(Amenity, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Room {self.number} ({self.status})"
+
+    class Meta:
+        ordering = ['number']
+        verbose_name = 'Room'
+        verbose_name_plural = 'Rooms'

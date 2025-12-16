@@ -29,12 +29,9 @@ class AmenityAdmin(admin.ModelAdmin):
 class RoomAdmin(admin.ModelAdmin):
     list_display = (
         'number',
-        'type',
-        'capacity',
-        'price_per_night',
         'status',
         'is_available'
         )
-    list_filter = ('type', 'status', 'is_available')
+    list_filter = ('status', 'is_available')
     search_fields = ('number', 'description')
     filter_horizontal = ('amenities',)
