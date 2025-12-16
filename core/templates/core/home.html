@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | Santas Resort{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to Santas Resort</h1>
+    <p>Your ultimate winter getaway: slopes, spa, and cozy stays.</p>
+    <a href="{% url 'book_stay' %}" class="btn">Book Your Stay</a>
+</section>
+
+<section class="highlights">
+    <h2>What We Offer</h2>
+    <ul>
+        <li>Skiing & Snowboarding</li>
+        <li>Spa & Wellness</li>
+        <li>Gourmet Dining</li>
+        <li>Winter Events</li>
+    </ul>
+</section>
+{% endblock %}
