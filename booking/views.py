@@ -3,5 +3,9 @@ from django.http import HttpResponse
 
 
 # Create your views here.
-def booking_home(request):
-    return HttpResponse("Booking app is working")
+def book_stay(request):
+    return render(request, 'booking/stay.html')
+
+
+def book_activities(request):
+    return render(request, 'booking/activities.html')
