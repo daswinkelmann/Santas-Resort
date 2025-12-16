@@ -3,7 +3,12 @@ from django.db import models
 
 # Create your models here.
 class Amenity(models.Model):
-    icon = models.CharField(max_length=100, blank=True)
+    icon = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text="Icon representing the amenity. "
+        "Use a font-awesome class eg. 'fa fa-wifi'"
+        )
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     is_available = models.BooleanField(default=True)
