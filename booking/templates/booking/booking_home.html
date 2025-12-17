@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block content %}
+<h2>Book Your Stay</h2>
+<details>
+    <summary>View Available Rooms</summary>
+    <ul>
+        {% for room in available_rooms %}
+            <li>Room {{ room.number }} - {{ room.type }} - ${{ room.price_per_night }} per night</li>
+        {% empty %}
+            <li>No rooms available at the moment.</li>
+        {% endfor %}
+    </ul>
+    <span id="unavailable-dates" style="display:none;">{{ unavailable_dates }}</span>
+<form method="POST">
+    {% csrf_token %}
+    {{ stay_form.as_p }}
+    <button type="submit" name="stay_submit">Book Stay</button>
+</form>
+</details>
+
+<h2>Book Your Activities</h2>
+<details>
+    <summary>View Available Activities</summary>
+    <ul>
+        {% for activity in available_activities %}
+            <li>{{ activity.name }} - ${{ activity.price }} - {{ activity.description }}</li>
+        {% empty %}
+            <li>No activities available at the moment.</li>
+        {% endfor %}
+    </ul>
+<form method="POST">
+    {% csrf_token %}
+    {{ activity_form.as_p }}
+    <button type="submit" name="activity_submit">Book Activity</button>
+</form>
+</details>
+{% endblock %}
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{% static 'js/components.js' %}"></script>
+{% endblock %}
