@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,6 @@
           crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Your custom CSS -->
-    {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     {% block extra_head %}{% endblock %}
@@ -26,8 +26,9 @@
 <!-- Navbar -->
 <nav>
     <div class="logo">
-        <img src="https://cdn.discordapp.com/attachments/1450063753260433420/1450109079610593361/258D25DE-0782-44C3-8B42-DAEB856497A1.PNG" alt="Santa Resort logo">
-        <span>Santa Resort</span>
+        <img src="{% static 'images/logo.webp' %}" alt="Santa Resort">
+        <span>Santa's Resort</span>
+        
     </div>
 
     <div class="hamburger" onclick="toggleMenu()">
