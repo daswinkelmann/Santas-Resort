@@ -1,9 +1,6 @@
 {% extends "base.html" %}
 
-{% extends "base.html" %}
 
-
-{% block title %}Home{% endblock %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -161,24 +158,6 @@
 
 {% endblock %}
 
-{% block extra_scripts %}
-<script>
-// Carousel for Non-Skier Hero Section
-let currentImageIndex = 0;
-const carouselImages = document.querySelectorAll('.carousel-image');
-
-function rotateCarousel() {
-    carouselImages.forEach(img => img.classList.remove('active'));
-    carouselImages[currentImageIndex].classList.add('active');
-    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
-    setTimeout(rotateCarousel, 5000);
-}
-
-if (carouselImages.length > 0) {
-    rotateCarousel();
-}
-</script>
-{% endblock %}
 {% block extra_scripts %}
 <script>
 // Carousel for Non-Skier Hero Section
