@@ -1,21 +1,154 @@
-{% extends 'base.html' %} 
+{% extends "base.html" %}
 
-{% block title %}Home | Santas Resort{% endblock %}
+
+{% block title %}Home{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <h1>Welcome to Santas Resort</h1>
-    <p>Your ultimate winter getaway: slopes, spa, and cozy stays.</p>
-    <a href="{% url 'booking_home' %}" class="btn">Book Your Stay</a>
+
+<!-- Hero Section -->
+<section id="hero">
+    <video autoplay muted loop playsinline preload="auto" class="hero-bg">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-top-of-a-snow-covered-mountain-range-and-pine-forests-5051-large.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-content">
+        <h1>Welcome to Santa Resort</h1>
+        <p>Discover the Ultimate Ski Experience</p>
+    </div>
 </section>
 
-<section class="highlights">
-    <h2>What We Offer</h2>
-    <ul>
-        <li>Skiing & Snowboarding</li>
-        <li>Spa & Wellness</li>
-        <li>Gourmet Dining</li>
-        <li>Winter Events</li>
-    </ul>
+<!-- Services -->
+<section id="services">
+    <h2>Our Services</h2>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Accommodation Reservations</h3>
+            <p>Cozy lodges and chalets with mountain views</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Ski School</h3>
+            <p>Learn how to ski and snowboard with expert instructors at any level</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Equipment rental</h3>
+            <p>Premium ski and snowboard gear for all levels</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Lift pass</h3>
+            <p>Access to all slopes and mountain facilities</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+    </div>
 </section>
+
+<!-- Non-Skier Activities Hero -->
+<section id="non-skier-hero">
+    <div class="non-skier-carousel">
+        <img src="#" alt="Ice skating" class="carousel-image active">
+        <img src="#" alt="Cross-country skiing" class="carousel-image">
+        <img src="#" alt="Snowshoeing" class="carousel-image">
+        <img src="#" alt="Zip lining" class="carousel-image">
+        <img src="#" alt="Hot air ballooning" class="carousel-image">
+        <img src="#" alt="Spa day" class="carousel-image">
+    </div>
+    <div class="non-skier-overlay"></div>
+    <div class="non-skier-content">
+        <h2>Activities for Non-Skiers</h2>
+        <p>Endless adventures await beyond the slopes</p>
+    </div>
+</section>
+
+<!-- Non-Skier Activities Cards -->
+<section id="non-skier-activities">
+    <div class="cards">
+        <div class="card">
+            <h3>Ice skating</h3>
+            <p>Enjoy gliding across our scenic outdoor ice rink surrounded by snowy mountains.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Cross-country</h3>
+            <p>Explore scenic trails and enjoy the tranquility of snow-covered landscapes on cross-country skis.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Snowshoeing</h3>
+            <p>Traverse snowy terrains and enjoy the peaceful winter wilderness on snowshoes.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Zip lining</h3>
+            <p>Experience the thrill of soaring through the snowy forest canopy on our exhilarating zip line courses.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Ballooning</h3>
+            <p>Soar above the snowy landscape and take in breathtaking views from a hot air balloon.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+
+        <div class="card">
+            <h3>Spa day</h3>
+            <p>Relax and rejuvenate with a variety of spa treatments and wellness therapies.</p>
+            <button class="card-btn">Learn More</button>
+        </div>
+    </div>
+</section>
+
+<!-- Info Section -->
+<section id="info">
+    <div class="info-row">
+        <div class="info-text">
+            <h2>The <span class="highlight">Resort</span></h2>
+            <p>Nestled in the snowy peaks, Santa Resort offers unforgettable winter experiences.</p>
+        </div>
+
+        <div class="info-image-wrapper">
+            <img src="https://images.pexels.com/photos/16037999/pexels-photo-16037999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Snowy mountain landscape with ski resort">
+        </div>
+    </div>
+
+    <div class="info-row reverse">
+        <div class="info-image-wrapper">
+            <img src="https://images.pexels.com/photos/30401227/pexels-photo-30401227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Stunning mountain ski resort in winter">
+        </div>
+
+        <div class="info-text">
+            <h2>Why <span class="highlight">Choose</span> Us?</h2>
+            <p>Expert instructors, modern facilities, and a welcoming atmosphere.</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Carousel for Non-Skier Hero Section
+let currentImageIndex = 0;
+const carouselImages = document.querySelectorAll('.carousel-image');
+
+function rotateCarousel() {
+    carouselImages.forEach(img => img.classList.remove('active'));
+    carouselImages[currentImageIndex].classList.add('active');
+    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+    setTimeout(rotateCarousel, 5000);
+}
+
+if (carouselImages.length > 0) {
+    rotateCarousel();
+}
+</script>
 {% endblock %}
