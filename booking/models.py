@@ -1,5 +1,5 @@
 from django.db import models
-from core.models import Service
+from core.models import Room, Service
 
 
 # Create your models here.
@@ -7,6 +7,13 @@ class Booking(models.Model):
     user_id = models.IntegerField(
         null=True, blank=True, help_text="ID of the user making the booking."
         )
+    room = models.ForeignKey(
+        Room,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="bookings"
+    )
     full_name = models.CharField(max_length=200)
     email = models.EmailField()
     phone_number = models.CharField(max_length=20, blank=True)
