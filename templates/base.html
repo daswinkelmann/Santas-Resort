@@ -22,26 +22,22 @@
     {% block extra_head %}{% endblock %}
 </head>
 <body>
-
-<!-- Navbar -->
-<nav>
-    <div class="logo">
-        <img src="{% static 'images/logo.webp' %}" alt="Santa Resort">
-        <span>Santa's Resort</span>
-        
-    </div>
-
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
-
-    <ul id="nav-menu">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#info">About</a></li>
-        <li><a href="#footer">Contact</a></li>
-    </ul>
-</nav>
+    <!-- SVG container for falling snow animation across the page  -->
+    <svg id="snow"></svg>
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <a href="{% url 'home' %}" class="logo">Santas Resort</a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Gallery</a></li>
+                    <li><a href="#">Book Stay</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
 <!-- Main content will be injected here -->
 {% block content %}
@@ -77,6 +73,7 @@ function toggleMenu() {
     document.getElementById('nav-menu').classList.toggle('active');
 }
 </script>
+<script src="{% static 'js/script.js' %}"></script>
 
 {% block extra_scripts %}{% endblock %}
 

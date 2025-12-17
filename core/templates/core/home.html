@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
+{% extends "base.html" %}
 
+
+{% block title %}Home{% endblock %}
 {% block title %}Home{% endblock %}
 
 {% block content %}
@@ -130,10 +133,52 @@
             <p>Expert instructors, modern facilities, and a welcoming atmosphere.</p>
         </div>
     </div>
+<!-- Info Section -->
+<section id="info">
+    <div class="info-row">
+        <div class="info-text">
+            <h2>The <span class="highlight">Resort</span></h2>
+            <p>Nestled in the snowy peaks, Santa Resort offers unforgettable winter experiences.</p>
+        </div>
+
+        <div class="info-image-wrapper">
+            <img src="https://images.pexels.com/photos/16037999/pexels-photo-16037999.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Snowy mountain landscape with ski resort">
+        </div>
+    </div>
+
+    <div class="info-row reverse">
+        <div class="info-image-wrapper">
+            <img src="https://images.pexels.com/photos/30401227/pexels-photo-30401227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Stunning mountain ski resort in winter">
+        </div>
+
+        <div class="info-text">
+            <h2>Why <span class="highlight">Choose</span> Us?</h2>
+            <p>Expert instructors, modern facilities, and a welcoming atmosphere.</p>
+        </div>
+    </div>
 </section>
+
 
 {% endblock %}
 
+{% block extra_scripts %}
+<script>
+// Carousel for Non-Skier Hero Section
+let currentImageIndex = 0;
+const carouselImages = document.querySelectorAll('.carousel-image');
+
+function rotateCarousel() {
+    carouselImages.forEach(img => img.classList.remove('active'));
+    carouselImages[currentImageIndex].classList.add('active');
+    currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
+    setTimeout(rotateCarousel, 5000);
+}
+
+if (carouselImages.length > 0) {
+    rotateCarousel();
+}
+</script>
+{% endblock %}
 {% block extra_scripts %}
 <script>
 // Carousel for Non-Skier Hero Section
