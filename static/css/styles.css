@@ -23,6 +23,7 @@ body {
     color: #333;
     line-height: 1.6;
     overflow: hidden; /*ensures snow doesn't appear outside the visible area*/
+    overflow-y: auto; /* allows vertical scrolling if needed */
 }
 
 #snow{
